@@ -16,8 +16,27 @@ import java.util.Stack;
  */
 public class Solution {
 
-	public List<Integer> inorderTraversal(TreeNode root) {
+	//=========================Recursive mode=============
+	public List<Integer> list = new ArrayList<Integer>();
+	public List<Integer> inorderTraversal_1(TreeNode root) {
+		inOrder(root);
+		return list;
+	}
+	public void inOrder(TreeNode node) {
+		if (node == null) {
+			return;
+		}
+		if (node.left != null) {
+			inOrder(node.left);
+		}
+		list.add(node.val);
+		if (node.right != null) {
+			inOrder(node.right);
+		}
+	}
 
+	//====================================================
+	public List<Integer> inorderTraversal(TreeNode root) {
 		List<Integer> result = new ArrayList<Integer>();
 		Stack<Guide> stack = new Stack<Guide>();
 		Guide guide = new Guide(0, root);
@@ -34,7 +53,6 @@ public class Solution {
 				stack.push(new Guide(0, current.node.right));
 				stack.push(new Guide(1, current.node));
 				stack.push(new Guide(0, current.node.left));
-
 			}
 		}
 		return result;
