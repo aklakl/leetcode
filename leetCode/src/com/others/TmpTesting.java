@@ -9,9 +9,9 @@ public class TmpTesting {
 	
 	public static void tmpTesting() {
 		System.out.println("tmpTesting");
-		int i=4;
-		for(int j =1 ;j<999;j++) {
-			int m = j % i;
+		int i=2;
+		for(int j =0 ;j<999;j++) {
+			double m = j % i;
 			System.out.println("j("+j+") mod i("+i+") ="+m+"");
 			
 		}

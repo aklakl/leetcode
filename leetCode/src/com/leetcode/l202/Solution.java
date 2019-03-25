@@ -5,7 +5,7 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.Set;
 
-//202
+//leetcode202
 public class Solution {
 	public static void main(String[] arg) {
 		Solution execution = new Solution();
@@ -18,14 +18,63 @@ public class Solution {
 	public void testSolution() {
 		System.out.println("testSolution");
 		int i = 0;
-		while (i<100) {
-			boolean flag = isHappy3(i);
+		while (i<999) {
+			boolean flag = isHappy(i);
 			if (flag) System.out.println("isHappy(i)="+i);
-			
+			//int s = getSquareSumOfDigits(i);
+			//System.out.println("getSquareSumOfDigits(i)="+s);
 			i++;
 		}
-
 	}
+	
+    public boolean isHappy(int n){
+        if (n<=0 ) return false;
+        Set<Integer> history = new HashSet<>();
+        while(n != 1) {
+        	if (history.contains(n)) {
+        		return false;
+        	}else {
+        		history.add(n);
+        		n = getSquareSum(n);
+        	}
+        }
+        return true;
+    }
+    
+    public int getSquareSum(int n){
+        int res = 0;
+        while(n > 0) {
+        	res = res + (n%10) * (n%10);
+        	n =n/10;
+        }
+    	return res;
+    }
+	
+	
+	//easy way to understand
+	public boolean isHappy111(int n) {
+		if (n <= 0)
+			return false;
+		Set<Integer> set = new HashSet<>();
+		while (n != 1) {
+			if (set.contains(n))
+				return false;
+			else {
+				set.add(n);
+				n = getSquareSumOfDigits111(n);
+			}
+		}
+		return true;
+	}
+	private int getSquareSumOfDigits111(int n) {
+		int res = 0;
+		while (n > 0) {
+			res += (n % 10) * (n % 10);
+			n /= 10;
+		}
+		return res;
+	}
+	
 	
 	Random random = new Random();
 	public void testNumberToString() {
