@@ -1,0 +1,66 @@
+This is the Scratch Pad. 
+The contents of this pad are synced to the other participants, but are not saved. 
+Use it ONLY for things you don't want saved in the CodePair report.
+
+// s = "1 + 2 ""
+// output 3
+
+
+// s = "2 * 3"
+//output 6
+
+//x  [2^31, 2^31-1]
+//x = 2^31-1
+//y = 2^31-1
+//c +
+
+//什么输入使得解析正常并且会抛异常？
+x= 1
+y= 0
+c= /
+
+
+foo => operation | calculate
+
+public double foo(string s)
+{
+	double x = 0;
+	double y = 0;
+	double z = 0;
+	string c;
+	
+	try
+	{
+		string[] st = s.Split(' ');
+		
+		x = double.Parse(st[0]);
+		c = st[1];
+		y = double.Parse(st[2]);
+		
+		switch (c)
+		{
+			case "+":
+				z = x + y;
+				break;
+			case "-":
+				z = x - y;
+				break;
+			case "*":
+				z = x * y;
+				break;
+			case "/":
+				z = x / y:
+				break;
+			default:
+				Console.WriteLine("Invalid Input");
+				break;
+		} // end switch
+	}
+	catch (Exception e)
+	{
+		Console.WriteLine(e.Message);
+	}
+	
+	return z;
+}
+
