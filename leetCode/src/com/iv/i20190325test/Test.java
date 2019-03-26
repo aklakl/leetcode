@@ -2,20 +2,39 @@ package com.iv.i20190325test;
 
 import java.util.Stack;
 
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+
+
 public class Test {
 	//https://coderpad.io/KRQAQZNX
 	//https://coderpad.io/KW6CFWXY
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String string = "2^3-1";
-		//string = "1+3+1-1";
+		string = "1+3+1-1";
 		int result = calactor(string);
 		System.out.println("result="+result);
 		
+		double dd = calactorWithScriptEngine(string);
+		System.out.println("result-dd="+dd);
+		
+	}
+	public static double calactorWithScriptEngine(String s) {
+		ScriptEngineManager scriptEngineManager = new ScriptEngineManager();
+		ScriptEngine execution = scriptEngineManager.getEngineByName("nashorn");
+		String result = "";
+		
+		try {
+			result = String.valueOf(execution.eval(s));
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return Double.parseDouble(result);
+		
 	}
 
-	public static int calactor(String s)
-	{
+	public static int calactor(String s){
 		int len = s.length();
 		if(s == null || len ==0) return 0; //Defensive coding
 		int lastNum = 0;
@@ -27,9 +46,7 @@ public class Test {
 			if (Character.isDigit(tmpChar)) {
 				lastNum = lastNum * 10 + tmpChar -'0';
 			}
-
 			if ( ( !Character.isDigit(tmpChar) && tmpChar != ' ') || i == len-1) {
-				
 				if (opt =='-') {
 					stack.push(-lastNum);
 				}else if (opt =='+'){
