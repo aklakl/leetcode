@@ -10,6 +10,18 @@ public class Solution {
 		string = solution.reverseStr(string,k);
 		System.out.println("result = "+string);
 		
+		System.out.println("=============================");
+		string = solution.testingReverseStr(string);
+		System.out.println("testingReverseStr = "+string);
+	}
+	
+	//testing for reverseStr via recursion like a stack
+	public String testingReverseStr(String s) {
+		System.out.println("execution in  stack | s="+s +"|c="+s.charAt(0));
+		if (s == null || s.length() <= 1) return s;
+		String r =  testingReverseStr(s.substring(1)) + s.charAt(0);
+		System.out.println("execution out stack | r="+r );
+		return r;
 	}
 
 	// my solution
