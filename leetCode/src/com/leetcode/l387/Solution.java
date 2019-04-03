@@ -7,14 +7,15 @@ public class Solution {
 	public static void main(String[] args) {
 		Solution solution = new Solution();
 		String string1 = "3876620623801494171";
-		String string2 = "6529364523802684779";
+		String string2 = "bdfhaa";
 	
 		string1 = solution.testing();
 		System.out.println("result = "+string1);
-		
+		int result = solution.firstUniqChar(string2);
+		System.out.println("result = "+result);
 	}
 	
-	
+	//using ASCII  A=65,B=66,Y=89,Z=90,a=97,b=98,y=121,z=122
     public int firstUniqChar(String s) {
         int freq [] = new int[26];
         for(int i = 0; i < s.length(); i ++)
