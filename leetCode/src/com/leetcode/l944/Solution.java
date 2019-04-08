@@ -19,7 +19,7 @@ public class Solution {
             for(int row = 1; row< len; row++){
             	char currentChar = A[row].charAt(col);
                 System.out.println("lastChar="+lastChar+"("+(int)lastChar+")|current="+currentChar+"("+(int)currentChar+")");
-                if (lastChar >= currentChar){
+                if (lastChar > currentChar){
                     r++;
                     break;
                 }
