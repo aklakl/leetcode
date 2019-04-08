@@ -9,6 +9,15 @@ public class TmpTesting {
 		// TODO Auto-generated method stub
 		tmpTesting();
 		testMapSize();
+		tmpTestingChar();
+	}
+	
+	public static void tmpTestingChar(){
+		char a ='a';
+		char b ='b';
+		System.out.println("a="+a+"|"+(int)a);
+		System.out.println("b="+b+"|"+(int)b);
+		System.out.println("a<b="+(a<b));
 	}
 	
 	public static void tmpTesting() {
