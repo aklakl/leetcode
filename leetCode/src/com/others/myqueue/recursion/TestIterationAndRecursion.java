@@ -1,4 +1,8 @@
-package com.others.myqueue.recourison;
+package com.others.myqueue.recursion;
+
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 /*
 https://blog.csdn.net/swliao/article/details/5337896
@@ -19,6 +23,11 @@ public class TestIterationAndRecursion {
 		
 		//execution.testIterationAndRecursionWithStringReverse();
 		System.out.println("============================");
+		String tmpStr ="ABCDEFGHIJKLMNOPQRSTUVWXYZ" ;
+		String result = execution.testRecurisonWithReverseString(tmpStr);
+		System.out.println("============================"+result);
+		
+		System.out.println("============================"+execution.testFibonacciWithRecursion(10));
 		
 	}
 
@@ -29,11 +38,26 @@ public class TestIterationAndRecursion {
 	}
 	
 	public  void testIteration() {
-		System.out.println("testRecursion");
-		
+		System.out.println("testIteration");
+		List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+		Iterator iter = list.iterator();
+		while(iter.hasNext()) {
+			Object obj = iter.next();
+			System.out.println(obj);
+		}
 		
 	}
 	
+	//use HashMap reduce the time complexity
+	//fibonacci number fib(n)=fib(n-1)+fib(n-2), 0+1+2+3+4+5
+	public int testFibonacciWithRecursion(int n ) {
+		System.out.println("n="+n);
+		if (n<=1) 
+			return n ;
+		else
+			return testFibonacciWithRecursion(n-1) + testFibonacciWithRecursion(n-2);
+		
+	}
 	public int testSumWithRecursion(int times) {
 		//System.out.println("testSumWithRecursion");
 		if (times == 0) return 0;
@@ -80,6 +104,13 @@ public class TestIterationAndRecursion {
 		System.out.println("testStringReverseWithRecursion = "+testStringReverseWithRecursion(string));
 		System.out.println("testStringReverseWithIteration = "+testStringReverseWithIteration(string));
 		
+	}
+	
+	public String testRecurisonWithReverseString(String string) {
+		//recursion with reverse string
+		if (string.length() == 1) return string;
+		System.out.println("out:"+string);
+		return testRecurisonWithReverseString(string.substring(1,string.length())) + string.charAt(0);
 	}
 	
 	
