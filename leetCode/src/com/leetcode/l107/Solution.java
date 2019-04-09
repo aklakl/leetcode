@@ -1,14 +1,15 @@
-package com.leetcode.l102;
+package com.leetcode.l107;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Queue;
+import java.util.Stack;
+
 
 public class Solution {
 	public static class TreeNode {
@@ -17,6 +18,12 @@ public class Solution {
 		TreeNode right;
 		TreeNode(int x) {
 			val = x;
+		}
+		@Override
+		public String toString() {
+			return "val="+Objects.toString(val) ;
+			//return "val="+Objects.toString(val) +"|left="+ (left!= null ? left.toString() : null )+"|right="+(right!= null ? right.toString() : null);
+			
 		}
 	}
 	public static TreeNode stringToTreeNode(String input) {
@@ -103,78 +110,53 @@ public class Solution {
         line= "[3,9,20,null,null,15,7]";
         System.out.println(line);
         TreeNode root = stringToTreeNode(line);
-        List<List<Integer>> ret = new Solution().levelOrder(root);
+        Solution solution = new Solution();
+        List<List<Integer>> ret = solution.levelOrderBottom(root);
         String out = int2dListToString(ret);
-        System.out.print("output="+out);
+        System.out.print("1output="+out);
+        
+        /*
+        ret = solution.levelOrderBottom1(root);
+        out = int2dListToString(ret);
+        System.out.print("2output="+out);
+        */
     }
 	//=============================upper these is the testing code=========================================================
 
     
-    
 	
-	//BFS-Queue solution
-    public List<List<Integer>> levelOrder(TreeNode root) {
-    	List<List<Integer>> result = new ArrayList<List<Integer>>();
-    	int i= 0;
+	
+	
+    //my solution
+    //Runtime: 16 ms, faster than 10.67% of Java online submissions for Binary Tree Level Order Traversal II.
+    //Memory Usage: 37.5 MB, less than 5.32% of Java online submissions for Binary Tree Level Order Traversal II.
+	public List<List<Integer>> levelOrderBottom(TreeNode root) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
         if (root == null)  return result;
-    	Queue queue = new LinkedList();
-    	queue.offer(root);
-    	while (!queue.isEmpty()) {
-    		int size = queue.size();
-    		List<Integer> tmpList = new ArrayList<Integer>();
-            while(size!=0){
-                TreeNode node = (TreeNode)queue.poll();
-                System.out.println("node="+node+"|i="+i);
-                tmpList.add(node.val);
-                if (node.left !=null) {
-                    queue.offer(node.left);
-                }
-                if (node.right!=null) {
-                    queue.offer(node.right);
-                }
-    		    size--;
-			    i++;
-            }
-            result.add(tmpList);
-		}
-    	return result;
-    }
-	
-    //=================================================================================
-    //use inOrderTraversal record the level,maybe the space complexity is a little high;
-    public List<List<Integer>> levelOrder1(TreeNode root) {
-        return inOrderTraversal(root);
-    }
-    int allmidCount = 0;
-    List result = new ArrayList();
-    Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
-    public List inOrderTraversal(TreeNode root){
-        inOrder(root,0);
-        System.out.println("map="+map+"|allmidCount="+allmidCount);
-        for(int i =0 ; i<allmidCount;i++){
-            if (!map.containsKey(i)) break;
-            result.add(map.get(i));
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.offer(root);
+        Stack<List<Integer>> stack = new Stack<List<Integer>>();
+        while(!queue.isEmpty()){
+            int size = queue.size();
+            List<Integer> list = new ArrayList<Integer>();
+            while(size!=0 ) {
+	            TreeNode node = (TreeNode)queue.poll();
+	            System.out.println("node="+node+"|size="+size);
+	            list.add(node.val);
+	            if (node.left!=null)
+	                queue.offer(node.left);
+	            if (node.right!=null)
+	                queue.offer(node.right);
+	            size--;
+            }   
+            stack.push(list);
         }
-        return result;
         
-    }
-    public void inOrder(TreeNode root,int level){
-        if (root == null) return;
-        System.out.println("root="+root+"|level="+level);
-        if (root.left != null)
-            inOrder(root.left,level+1);
-        List<Integer> list = new ArrayList<Integer>(); 
-        if (map.containsKey(level)){
-            list = map.get(level);
-        }else{
-            map.put(level,list);
+        while(!stack.isEmpty()){
+            result.add(stack.pop());
         }
-        list.add(root.val);
-        allmidCount++;
-        if (root.right != null)
-            inOrder(root.right,level+1);
+        
+        return result;
     }
-    
-    
-	
+
 }

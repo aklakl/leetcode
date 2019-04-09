@@ -1,4 +1,4 @@
-package com.others;
+package com.others.tmptest;
 
 import java.util.HashMap;
 import java.util.Map;
