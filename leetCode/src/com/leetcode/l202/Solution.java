@@ -12,6 +12,7 @@ public class Solution {
 		execution.testSolution();
 		System.out.println("============================");
 		//execution.testNumberToString();
+		System.out.println("isHappyNew(i)="+execution.isHappyNew(3));
 		System.out.println("============================");
 	}
 
@@ -26,6 +27,27 @@ public class Solution {
 			i++;
 		}
 	}
+	
+	//http://www.cnblogs.com/grandyang/p/4447233.html
+	//fast slow  algorithm
+	//这道题还有一种快慢指针的解法,跟 Linked List Cycle 检测环的方法类似，不同的是这道题环一定存在.we only need the cycle is slow=1 
+	public boolean isHappyNew(int n) {
+		if (n<0) return false;
+		int slow = n;
+		int fast = n;
+		while(true) {
+			System.out.println("1slow="+slow+"|fast="+fast);
+			slow = getSquareSum(slow);
+			fast = getSquareSum(fast);
+			System.out.println("2slow="+slow+"|fast="+fast);
+			fast = getSquareSum(fast);
+			System.out.println("3slow="+slow+"|fast="+fast);
+			if (slow==fast) break;
+			
+		}
+		return slow ==1;
+	}
+	
 	
     public boolean isHappy(int n){
         if (n<=0 ) return false;
