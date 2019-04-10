@@ -115,40 +115,42 @@ public class Solution {
 	//BFS-Queue solution
     public List<List<Integer>> levelOrder(TreeNode root) {
     	List<List<Integer>> result = new ArrayList<List<Integer>>();
-    	int i= 0;
+    	int totalNodeCount = 0;
         if (root == null)  return result;
-    	Queue queue = new LinkedList();
-    	queue.offer(root);
-    	while (!queue.isEmpty()) {
-    		int size = queue.size();
+    	Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
+    	nodeQueue.offer(root);
+    	int layerIndex = 1;
+    	while (!nodeQueue.isEmpty()) {
+    		int eachLayerSize = nodeQueue.size();
     		List<Integer> tmpList = new ArrayList<Integer>();
-            while(size!=0){
-                TreeNode node = (TreeNode)queue.poll();
-                System.out.println("node="+node.val+"|i="+i);
-                tmpList.add(node.val);
-                if (node.left !=null) {
-                    queue.offer(node.left);
+            while(eachLayerSize!=0){
+                TreeNode currentNode = (TreeNode)nodeQueue.poll();
+                System.out.println("node="+currentNode.val+"|NodeIndex="+totalNodeCount);
+                tmpList.add(currentNode.val);
+                if (currentNode.left !=null) {
+                	nodeQueue.offer(currentNode.left);
                 }
-                if (node.right!=null) {
-                    queue.offer(node.right);
+                if (currentNode.right!=null) {
+                	nodeQueue.offer(currentNode.right);
                 }
-    		    size--;
-			    i++;
+                eachLayerSize--;
+    		    totalNodeCount++;
             }
             result.add(tmpList);
+            layerIndex++;
 		}
     	return result;
     }
 	
     //=================================================================================
-    //use inOrderTraversal record the level,maybe the space complexity is a little high;
+    //use inOrderTraversal record the level,Because the space complexity is a little high;
     public List<List<Integer>> levelOrder1(TreeNode root) {
         return inOrderTraversal(root);
     }
     int allmidCount = 0;
-    List result = new ArrayList();
+    List<List<Integer>> result = new LinkedList<List<Integer>>();
     Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
-    public List inOrderTraversal(TreeNode root){
+    public List<List<Integer>> inOrderTraversal(TreeNode root){
         inOrder(root,0);
         System.out.println("map="+map+"|allmidCount="+allmidCount);
         for(int i =0 ; i<allmidCount;i++){
@@ -161,18 +163,18 @@ public class Solution {
     public void inOrder(TreeNode root,int level){
         if (root == null) return;
         System.out.println("root="+root+"|level="+level);
+        List<Integer> list = new ArrayList<Integer>(); 
         if (root.left != null)
             inOrder(root.left,level+1);
-        List<Integer> list = new ArrayList<Integer>(); 
         if (map.containsKey(level)){
             list = map.get(level);
         }else{
             map.put(level,list);
         }
         list.add(root.val);
-        allmidCount++;
         if (root.right != null)
             inOrder(root.right,level+1);
+        allmidCount++;
     }
     
     

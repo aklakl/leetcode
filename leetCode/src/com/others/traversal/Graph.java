@@ -45,9 +45,9 @@ public class Graph {
 	}
 	
 	public String BFStesting(HashMap<Character,char[]> graph, char topPoint) {
-		Queue<Character> queue = new LinkedList();		
+		Queue<Character> queue = new LinkedList<Character>();		
 		queue.offer(topPoint);
-		HashMap<Character,Character> visited = new HashMap();	//already visited
+		HashMap<Character,Character> visited = new HashMap<Character, Character>();	//already visited
 		visited.put(topPoint, topPoint);
 		String result = "";
 		while (queue.size()>0) {
@@ -68,9 +68,9 @@ public class Graph {
 	}
 	
 	public String DFStesting(HashMap<Character,char[]> graph, char topPoint) {
-		Stack<Character> stack = new Stack();		
+		Stack<Character> stack = new Stack<Character>();		
 		stack.push(topPoint);
-		HashMap<Character,Character> visited = new HashMap();	//already visited
+		HashMap<Character,Character> visited = new HashMap<Character, Character>();	//already visited
 		visited.put(topPoint, topPoint);
 		String result = "";
 		while (stack.size()>0) {

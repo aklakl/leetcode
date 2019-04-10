@@ -1,8 +1,10 @@
-package com.others.myqueue.recursion;
+package com.others.datastructure.myqueue.recursion;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /*
 https://blog.csdn.net/swliao/article/details/5337896
@@ -28,6 +30,9 @@ public class TestIterationAndRecursion {
 		System.out.println("============================"+result);
 		
 		System.out.println("============================"+execution.testFibonacciWithRecursion(10));
+		
+		execution.testIterationAndRecursionWithMap();
+		System.out.println("============================");
 		
 	}
 
@@ -81,7 +86,22 @@ public class TestIterationAndRecursion {
 		System.out.println("testSumWithIteration = "+testSumWithIteration(times));
 		
 	}
-	
+	public  void testIterationAndRecursionWithMap() {
+		System.out.println("testIterationAndRecursionWithMap");
+		int times = 100;
+		Map map = new HashMap();
+		for(int i =0; i< 30; i++){
+			map.put(i, "value"+i);
+		}
+		Iterator iterator = map.keySet().iterator();
+		
+		while (iterator.hasNext()) {
+			Object key = iterator.next();
+			Object value = map.get(key);
+			System.out.println("key="+key+"|value="+value);
+		}
+		
+	}
 	
 	
 	public String testStringReverseWithRecursion(String string) {
@@ -109,8 +129,9 @@ public class TestIterationAndRecursion {
 	public String testRecurisonWithReverseString(String string) {
 		//recursion with reverse string
 		if (string.length() == 1) return string;
-		System.out.println("out:"+string);
-		return testRecurisonWithReverseString(string.substring(1,string.length())) + string.charAt(0);
+		String result = testRecurisonWithReverseString(string.substring(1,string.length())) + string.charAt(0);
+		System.out.println("out:"+result);
+		return result;
 	}
 	
 	

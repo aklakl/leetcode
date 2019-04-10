@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
 
-import com.others.myqueue.TestQueue;
+import com.others.datastructure.myqueue.TestQueue;
 
 //设计一个queue，不可以用数组，Stack，等数据结构
 public class MyLinkedListQueue<T> implements Queue<T> {
