@@ -113,20 +113,16 @@ public class Solution {
         Solution solution = new Solution();
         List<List<Integer>> ret = solution.levelOrderBottom(root);
         String out = int2dListToString(ret);
-        System.out.print("1output="+out);
+        System.out.println("1output="+out);
         
-        /*
+        System.out.println("==============================");
         ret = solution.levelOrderBottom1(root);
         out = int2dListToString(ret);
-        System.out.print("2output="+out);
-        */
+        System.out.println("2output="+out);
+   
     }
 	//=============================upper these is the testing code=========================================================
-
-    
-	
-	
-	
+ 
     //my solution
     //Runtime: 16 ms, faster than 10.67% of Java online submissions for Binary Tree Level Order Traversal II.
     //Memory Usage: 37.5 MB, less than 5.32% of Java online submissions for Binary Tree Level Order Traversal II.
@@ -157,6 +153,33 @@ public class Solution {
         }
         
         return result;
+    }
+	
+	/*
+	the tree like this
+    3
+   / \
+  9  20
+    /  \
+   15   7
+
+	 */
+    //another solution with  Postorder Traversal also recursion
+    public List<List<Integer>> levelOrderBottom1(TreeNode root) {
+        List<List<Integer>> wrapList = new LinkedList<List<Integer>>();
+        levelMaker(wrapList, root, 0);
+        return wrapList;
+    }
+    
+    public void levelMaker(List<List<Integer>> list, TreeNode root, int level) {
+        if(root == null) return;
+        if(level >= list.size()) {
+            list.add(0, new LinkedList<Integer>());
+        }
+        levelMaker(list, root.left, level+1);
+        levelMaker(list, root.right, level+1);
+        list.get(list.size()-level-1).add(root.val);
+        System.out.println("level="+level+"|val="+root.val+"|left="+ (root.left != null ? root.left.val : "") +"|right="+(root.right !=null ? root.right.val : ""));
     }
 
 }

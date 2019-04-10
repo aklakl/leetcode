@@ -1,16 +1,16 @@
-package com.leetcode.l102;
+package com.leetcode.l103;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 
 public class Solution {
+
 	public static class TreeNode {
 		int val;
 		TreeNode left;
@@ -100,81 +100,83 @@ public class Solution {
 //            String out = int2dListToString(ret);
 //            System.out.print(out);
 //        }
-        line= "[3,9,20,null,null,15,7]";
+        line = "[3,9,20,null,null,15,7]";	//expected 
+        line = "[1,2,3,4,5]";	//expected [[1],[3,2],[4,5]]
+        line = "[1,2,3,4,null,null,5]";		//expected [[1],[3,2],[4,5]]
         System.out.println(line);
         TreeNode root = stringToTreeNode(line);
-        List<List<Integer>> ret = new Solution().levelOrder(root);
+        List<List<Integer>> ret = new Solution().zigzagLevelOrder(root);
         String out = int2dListToString(ret);
-        System.out.print("output="+out);
+        System.out.println("1output="+out);
+        
+        System.out.println("==============================================");
+        ret = new Solution().zigzagLevelOrder1(root);
+        out = int2dListToString(ret);
+        System.out.println("2output="+out);
+        
+        
+        
     }
 	//=============================upper these is the testing code=========================================================
 
-    
-    
+
 	
-	//BFS-Queue solution
-    public List<List<Integer>> levelOrder(TreeNode root) {
-    	List<List<Integer>> result = new ArrayList<List<Integer>>();
-    	int i= 0;
-        if (root == null)  return result;
-    	Queue queue = new LinkedList();
-    	queue.offer(root);
-    	while (!queue.isEmpty()) {
-    		int size = queue.size();
-    		List<Integer> tmpList = new ArrayList<Integer>();
-            while(size!=0){
-                TreeNode node = (TreeNode)queue.poll();
-                System.out.println("node="+node.val+"|i="+i);
-                tmpList.add(node.val);
-                if (node.left !=null) {
-                    queue.offer(node.left);
+    //my solution using level not correct
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        if (root == null) return result;
+        
+        Queue<TreeNode> queueNode = new LinkedList<TreeNode>();
+        queueNode.offer(root);
+        int layerIndex = 1;  //the odd even flag
+        while(!queueNode.isEmpty()){
+            int levelCount = queueNode.size();
+            List<Integer> sublist = new ArrayList<Integer>();
+            
+            while(levelCount != 0 ) {  //traversal each node for the same level 
+            	TreeNode currentNode = queueNode.poll();
+                sublist.add(currentNode.val);
+                System.out.println("layerIndex="+layerIndex+"|levelCount="+levelCount+"|val="+currentNode.val+"|left="+ (currentNode.left != null ? currentNode.left.val : "") +"|right="+(currentNode.right !=null ? currentNode.right.val : ""));
+                if (layerIndex%2 == 0){
+                    if (currentNode.left != null)  queueNode.offer(currentNode.left);
+                    if (currentNode.right != null) queueNode.offer(currentNode.right);
+                }else{
+                    if (currentNode.right != null) queueNode.offer(currentNode.right); 
+                    if (currentNode.left != null)  queueNode.offer(currentNode.left);
                 }
-                if (node.right!=null) {
-                    queue.offer(node.right);
-                }
-    		    size--;
-			    i++;
+             	levelCount--;
             }
-            result.add(tmpList);
-		}
-    	return result;
-    }
-	
-    //=================================================================================
-    //use inOrderTraversal record the level,maybe the space complexity is a little high;
-    public List<List<Integer>> levelOrder1(TreeNode root) {
-        return inOrderTraversal(root);
-    }
-    int allmidCount = 0;
-    List result = new ArrayList();
-    Map<Integer,List<Integer>> map = new HashMap<Integer,List<Integer>>();
-    public List inOrderTraversal(TreeNode root){
-        inOrder(root,0);
-        System.out.println("map="+map+"|allmidCount="+allmidCount);
-        for(int i =0 ; i<allmidCount;i++){
-            if (!map.containsKey(i)) break;
-            result.add(map.get(i));
+            layerIndex++;
+            result.add(sublist);
         }
         return result;
-        
-    }
-    public void inOrder(TreeNode root,int level){
-        if (root == null) return;
-        System.out.println("root="+root+"|level="+level);
-        if (root.left != null)
-            inOrder(root.left,level+1);
-        List<Integer> list = new ArrayList<Integer>(); 
-        if (map.containsKey(level)){
-            list = map.get(level);
-        }else{
-            map.put(level,list);
-        }
-        list.add(root.val);
-        allmidCount++;
-        if (root.right != null)
-            inOrder(root.right,level+1);
     }
     
-    
-	
+    //my solution using  level flag and reverse list
+    public List<List<Integer>> zigzagLevelOrder1(TreeNode root) {
+    	List<List<Integer>> result = new LinkedList<List<Integer>>();
+    	if (root == null) return result;
+    	Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
+    	nodeQueue.add(root);
+    	int layerIndex = 1;
+    	while(!nodeQueue.isEmpty()) {
+    		int layerSubCount = nodeQueue.size();
+    		List<Integer> subList = new LinkedList<Integer>();
+    		while(layerSubCount != 0) {
+    			TreeNode currentNode = nodeQueue.poll();
+    			if (currentNode.left != null)  nodeQueue.offer(currentNode.left);
+    			if (currentNode.right != null) nodeQueue.offer(currentNode.right); 
+    			subList.add(currentNode.val);
+    			layerSubCount--;
+    		}
+    		if (layerIndex%2 == 0)  {
+    			System.out.println(0);
+    			Collections.reverse(subList);
+    		}
+    		result.add(subList);
+    		layerIndex++;
+    	}
+		return result;
+    }
+
 }
