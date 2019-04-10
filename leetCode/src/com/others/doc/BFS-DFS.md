@@ -1,11 +1,11 @@
 http://fangda.me/2018/04/11/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88DFS%EF%BC%89%E5%92%8C%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%EF%BC%88BFS%EF%BC%89%E8%AF%A6%E8%A7%A3/
 
-the graphic traversal feature is these:
-广度优先搜索算法（Breadth First Search）BFS-Queue
+the graph traversal feature is these:
+广度优先搜索算法（Breadth First Search）BFS-Queue[The characteristics of queue are FistIn FistOut]
 借助队列数据结构，由于队列是先进先出的顺序，因此可以先将左子树入队，然后再将右子树入队。
 有很多种结果。转换成树后很容易理解，一层一层从左往右走，适合层次关系
 
-深度优先搜索算法（Depth First Search）DFS-Stack
+深度优先搜索算法（Depth First Search）DFS-Stack[The characteristics of stack are FistIn LastOut]
 借助堆栈的数据结构，由于堆栈是后进先出的顺序，由此可以先将右子树压栈，然后再对左子树压栈，
 DFS-Stack:有很多种结果。走到最根节点后，回到上一节点再遍历.
 
@@ -27,4 +27,5 @@ Postorder Traversal (Left-Right-Root)
 
 
 DFS and BFS implement : https://www.jianshu.com/p/a753d5c733ec
-https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/
+bfs-vs-dfs-binary-tree :https://www.geeksforgeeks.org/bfs-vs-dfs-binary-tree/
+comparison with tree and graph DFS,BFS https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/

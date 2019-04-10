@@ -1,6 +1,5 @@
 package com.others.datastructure.tree;
 
-import com.leetcode.l102.Solution.TreeNode;
 
 public class Solution {
 	
@@ -17,7 +16,7 @@ public class Solution {
 		return new TreeNode(value);
 	}
 	
-	
+	//https://www.geeksforgeeks.org/print-leaf-nodes-left-right-binary-tree/
 	public static void main(String[] args) {
 		// Driver program to test above functions 
 		    // Let us create binary tree shown in  
@@ -41,13 +40,15 @@ public class Solution {
 	//program to print leaf nodes from left  to right
 	public static void printLeafNodes(TreeNode root) {
 		if (root == null) return;
-		
+		//the no
 		if (root.left==null && root.right==null ) {
 			System.out.println(root.val);
 		}
+		// recursively 
 		if (root.left!=null) {
 			printLeafNodes(root.left);
 		}
+		// recursively 
 		if (root.right!=null) {
 			printLeafNodes(root.right);
 		}
