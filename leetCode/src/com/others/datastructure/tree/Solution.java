@@ -1,16 +1,10 @@
 package com.others.datastructure.tree;
 
+import com.others.datastructure.tree.base.TreeNode;
 
 public class Solution {
 	
-	public static class TreeNode {
-		int val;
-		TreeNode left;
-		TreeNode right;
-		TreeNode(int x) {
-			val = x;
-		}
-	}
+	
 	
 	public static TreeNode newNode(int value) {
 		return new TreeNode(value);
@@ -34,6 +28,9 @@ public class Solution {
 		   
 		    // print leaf nodes of the given tree 
 		    printLeafNodes(root); //the result should be 4 6 7 9 10
+		    System.out.println("===============printLeafNodes===========");
+		    preOrder(root);
+		    System.out.println("===============preOrder===========");
 		    
 	} 
 	
@@ -70,10 +67,10 @@ public class Solution {
 	public static void posOrder(TreeNode root) {
 		if (root == null) return;
 		if (root.left!=null) {
-			printLeafNodes(root.left);
+			posOrder(root.left);
 		}
 		if (root.right!=null) {
-			printLeafNodes(root.right);
+			posOrder(root.right);
 		}
 		System.out.println(root.val);
 	}
@@ -82,11 +79,11 @@ public class Solution {
 	public static void inOrder(TreeNode root) {
 		if (root == null) return;
 		if (root.left!=null) {
-			printLeafNodes(root.left);
+			inOrder(root.left);
 		}
 		System.out.println(root.val);
 		if (root.right!=null) {
-			printLeafNodes(root.right);
+			inOrder(root.right);
 		}
 		
 	}

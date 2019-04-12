@@ -1,4 +1,4 @@
-package com.others.datastructure.tree;
+package com.others.datastructure.tree.base;
 
 
 public class BinaryTreeNode<T> {
