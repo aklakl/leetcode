@@ -50,8 +50,8 @@ public class Solution {
 		//System.out.println("reverseListNodeWithStack="+result);
 		System.out.println("==========================================");
 		
-		result = reverseListNodeWithCecursion(ListNode.arrayToListNode(arrayListNode1));
-		System.out.println("reverseListNodeWithCecursion="+result);
+		result = reverseListNodeWithRecursion(ListNode.arrayToListNode(arrayListNode1));
+		System.out.println("reverseListNodeWithRecursion="+result);
 		System.out.println("==========================================");
 		
 		
@@ -63,12 +63,21 @@ public class Solution {
 	
 	
 	//==================================================================================================
-	//recursion solution
-	public ListNode reverseListNodeWithCecursion(ListNode input) {
-		System.out.println("reverseListNodeWithCecursion|input="+input);
-		
-		
-		return input;
+	//https://www.geeksforgeeks.org/reverse-a-linked-list/
+	//recursion solution  https://www.cs.cmu.edu/~pattis/15-1XX/15-200/lectures/llrecursion/index.html
+	//1,2,3,4,5,6 this is a little hard to understand
+	public ListNode reverseListNodeWithRecursion(ListNode input) {
+		//System.out.println("reverseListNodeWithCecursion|input="+input);
+		//System.out.println("1input="+input.toString1());
+		if (input == null || input.next == null) return input;
+		ListNode newNode = reverseListNodeWithRecursion(input.next);
+		//System.out.println("2newNode="+newNode.toString1());
+		// change references for middle chain 
+		input.next.next = input;
+		input.next = null;
+		//System.out.println("3newNode="+newNode.toString1());
+		// send back new head node in every recursion 
+		return newNode ;
 	}
 	
 	//my solution

@@ -8,3 +8,6 @@ Summary
 
 algorithm:
 二分查找法在算法家族大类中属于“分治法”，分治法基本都可以用递归来实现的
+
+singly linked list node ()
+usually using fast-slow algorithm.

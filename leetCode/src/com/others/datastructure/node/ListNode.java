@@ -24,10 +24,12 @@ public class ListNode {
 
 	//@Override
 	public String toString() {
+		return this.toString(this);
+	}
+	public String toString(ListNode node) {
+		if (node == null) return "";
 		StringBuilder sb = new StringBuilder();
-		
-		ListNode currentNode = null;
-		currentNode = this;
+		ListNode currentNode = node;
 		int count = 0 ;
 		while(currentNode!=null) {
 			sb.append(currentNode.val+",");
