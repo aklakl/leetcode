@@ -26,22 +26,22 @@ public class ListNode {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		
-		/*
-		ListNode currentNode = this;
-		int i = 0 ;
+		ListNode currentNode = null;
+		currentNode = this;
+		int count = 0 ;
 		while(currentNode!=null) {
 			sb.append(currentNode.val+",");
 			currentNode = currentNode.next;
-			i++;
+			count++;
 		}
-		*/
-		sb.append(val+",");
-		sb.append(recursion(next));
-		sb.append("size="+sb.length()/2);
+		//sb.append(val+",");
+		//sb.append(recursion(next));
+		sb.append("size="+count);
 		return sb.toString();
 	}
-	
+	private int count = 1;
 	private String recursion(ListNode next){
+		count++;
 		if (next == null) return "";
 		if (next.next!= null) return next.val +"," +  recursion(next.next);
 		return next.val +",";

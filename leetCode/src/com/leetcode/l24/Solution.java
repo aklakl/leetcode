@@ -25,7 +25,7 @@ public class Solution {
 	}
 	
 	public  void testingStart() {
-		int[] arrays = {1,2,3,4,5,6,7,9,0,1,2,3,4,5,6,7,8,9};
+		int[] arrays = {1,2,3,4,5,6,7,8,9,0};
 		ListNode listNodeResult = null;
 		
 		listNodeResult = swapPairs(ListNode.arrayToListNode(arrays));
@@ -34,23 +34,8 @@ public class Solution {
 		//listNodeResult = swapPairs_good(listNode1,listNode2); 
 		//System.out.println("swapPairs_good="+listNodeResult);
 		
-		
 	}
 
-	private void testingTwoLists(ListNode listNode1, ListNode listNode2) {
-		System.out.println("testing=begin");
-		ListNode tmpListNode = listNode1;
-		System.out.println("tmpListNode="+tmpListNode);
-		//listNode1.val = 3;	//this can be change the tmpListNode
-		//listNode1.next = new ListNode(0);	//this can be change the tmpListNode
-		listNode1 = null;		//this cann't change the tmpListNode
-		
-		System.out.println("tmpListNode="+tmpListNode);
-		
-		System.out.println("testing=end");
-	}
-
-	
 	
 	//==================================================================================================
 	
@@ -62,16 +47,23 @@ public class Solution {
 		ListNode curr = head;
 		ListNode prev = null ;
 		ListNode tail = null ;
-		
-		while(curr!= null) {
-			//1,2,3,4,5,6
-			temp = curr.next;
-			curr.next = prev;
-			prev = curr;
-			curr = temp;
-			
-			//prev = curr.next; 
-			
+		ListNode result = null;
+//dummy
+		while(curr.next.next!= null) {
+			//1,2
+			//1,2,3,4,5,6 =>2,1,4,3,6,5
+			ListNode next = curr.next.next;	//the next is after two number
+			prev = curr.next;
+			prev.next = curr;
+			//prev = temp;
+			prev.next.next = prev.next;
+			if (result == null) {
+				result = prev;
+			}else {
+				
+			}
+			prev = prev.next;
+			curr = next;
 			
 			/*
 			tail = cur.next.next;
@@ -81,10 +73,10 @@ public class Solution {
 			cur = temp;
 			*/
 			
-			System.out.println("head="+head+"|last="+tail+"|prev="+prev);
+			System.out.println("head="+head+"|result="+result+"|prev="+prev);
 			//System.out.println("head="+head+"|last="+tail);
 		}
-		return prev;
+		return result;
     }
 	
 	

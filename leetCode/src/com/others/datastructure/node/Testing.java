@@ -23,6 +23,8 @@ public class Testing {
 		System.out.println("testingInsertListNodeAfterIndex="+result);
 		System.out.println("==========================================");
 		
+		result = testingDeleteListNodeAfterIndex(result,2);
+		System.out.println("testingDeleteListNodeAfterIndex="+result);
 		System.out.println("==========================================");
 		
 		
@@ -60,6 +62,25 @@ public class Testing {
 				break;
 			}
 			curr = next;
+			i++;
+			System.out.println("head="+head+"|curr="+curr+"|next="+next);
+		}
+		System.out.println("head="+head);
+		return head;	
+	}
+	
+	//delete after index
+	public ListNode testingDeleteListNodeAfterIndex(ListNode head,int index) {
+		System.out.println("testingDeleteListNodeAfterIndex.head="+head);
+		ListNode curr = head;			//made changes with tail pointer only tail changing, the head is no changed
+		int i = 1;
+		while(curr.next!=null) {
+			ListNode next = curr.next.next;
+			if (i==index) {
+				curr.next = next;
+				break;
+			}
+			curr = curr.next;
 			i++;
 			System.out.println("head="+head+"|curr="+curr+"|next="+next);
 		}
