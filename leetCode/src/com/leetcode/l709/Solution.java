@@ -1,7 +1,6 @@
 package com.leetcode.l709;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 public class Solution {
 	public static void main(String[] arg) {

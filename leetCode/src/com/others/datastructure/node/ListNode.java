@@ -106,8 +106,7 @@ public class ListNode {
 		System.out.println("listNode2="+listNode2);
 		//testingTwoLists(listNode1,listNode2);
 		
-		//listNodeResult = swapPairs_good(listNode1,listNode2); 
-		//System.out.println("swapPairs_good="+listNodeResult);
+	
 		
 	}
 	

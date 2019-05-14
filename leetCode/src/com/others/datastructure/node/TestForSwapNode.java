@@ -45,8 +45,14 @@ public class TestForSwapNode {
 		
 	}
 	
-	//my solution
 	public ListNode swapNode(int a, int b, ListNode head) {
+		return swapNode_my(a,b,head);
+		//return swapNode2(a,b,head);
+		//return swapNode1(a,b,head);
+	}
+	
+	//my solution not correct
+	public ListNode swapNode_my(int a, int b, ListNode head) {
 		if (head == null || head.next == null || a == b ) return head;
 		ListNode curr = head;
 		ListNode prevA = null;
@@ -102,7 +108,46 @@ public class TestForSwapNode {
 		return head;
 	}
 	
-	public void swapNodes(int x, int y , ListNode head) 
+	//https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
+	static ListNode swapNode2( int x, int y,ListNode head_ref) {
+		ListNode head = head_ref;
+		// Nothing to do if x and y are same
+		if (x == y)
+			return null;
+
+		ListNode a = null, b = null;
+
+		// search for x and y in the linked list
+		// and store therir pointer in a and b
+		while (head_ref.next != null) {
+
+			if ((head_ref.next).val == x) {
+				a = head_ref;
+			}
+
+			else if ((head_ref.next).val == y) {
+				b = head_ref;
+			}
+
+			head_ref = ((head_ref).next);
+		}
+
+		// if we have found both a and b
+		// in the linked list swap current
+		// pointer and next pointer of these
+		if (a != null && b != null) {
+			ListNode temp = a.next;
+			a.next = b.next;
+			b.next = temp;
+			temp = a.next.next;
+			a.next.next = b.next.next;
+			b.next.next = temp;
+		}
+		return head;
+	}
+	
+	//https://www.geeksforgeeks.org/swap-nodes-in-a-linked-list-without-swapping-data/
+	public void swapNode1(int x, int y , ListNode head) 
     { 
         // Nothing to do if x and y are same 
         if (x == y) return; 
