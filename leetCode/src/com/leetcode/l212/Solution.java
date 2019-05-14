@@ -24,7 +24,6 @@ public class Solution {
 	
    	//20190408105800 to 20190408112600
     public List<String> findWords(char[][] board, String[] words) {
-        
     	List<String> result = new ArrayList<String>();
         if (board.length == 0 || words.length == 0 ) return result; //defensive coding
 

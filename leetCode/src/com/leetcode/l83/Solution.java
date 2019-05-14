@@ -42,8 +42,7 @@ public class Solution {
 		listNodeResult = deleteDuplicates(ListNode.arrayToListNode(arrays));
 		System.out.println("deleteDuplicates="+listNodeResult);
 	 
-		//listNodeResult = swapPairs_good(listNode1,listNode2); 
-		//System.out.println("swapPairs_good="+listNodeResult);
+
 	}
 	
 	//recursive solution :https://leetcode.com/problems/remove-duplicates-from-sorted-list/discuss/28625/3-Line-JAVA-recursive-solution

@@ -55,8 +55,7 @@ public class Solution {
 		deleteNode(ListNode.arrayToListNode(arrays));
 		System.out.println("deleteNode="+listNodeResult);
 	 
-		//listNodeResult = swapPairs_good(listNode1,listNode2); 
-		//System.out.println("swapPairs_good="+listNodeResult);
+
 		
 	}
 	//https://blog.csdn.net/fuxuemingzhu/article/details/51285004

@@ -5,11 +5,13 @@ public class Testing {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Testing execution = new Testing();
-		execution.testingStart();
+		//execution.testingStart();
+		System.out.println("=========================================");
+		
 		System.out.println("=========================================");
 	}
 	
-	
+
 
 	private void testingStart() {
 		System.out.println("testing=begin");
@@ -27,6 +29,10 @@ public class Testing {
 		System.out.println("testingDeleteListNodeAfterIndex="+result);
 		System.out.println("==========================================");
 		
+		testingPointerManipulation();
+		System.out.println("");
+		System.out.println("testingPointerManipulation=");
+		System.out.println("==========================================");
 		
 		
 		System.out.println("testing=end");
@@ -86,6 +92,71 @@ public class Testing {
 		}
 		System.out.println("head="+head);
 		return head;	
+	}
+	
+	
+	public void print(ListNode head){
+	    for(ListNode node = head; node != null; node = node.next){
+	        System.out.print(node.val);
+	        System.out.print("->");
+	        System.out.print("null");
+	    }
+	}
+	
+	//https://blog.csdn.net/qilei2010/article/details/51226866
+	//1234567890
+	public void testingPointerManipulation(){
+	    ListNode node1 = new ListNode(1);
+	    ListNode node2 = new ListNode(2);
+	    ListNode node3 = new ListNode(3);
+
+	    ListNode head = node1;
+	    node1.next = node2;
+	    node2.next = node3;
+	    ListNode headBak = head;
+	    headBak = new ListNode(0);
+	    ListNode headBak1 = head;
+	    headBak1 = headBak1.next;	
+	    
+	    print(head);//语句1
+	    System.out.println("");
+	    node1= node2;
+	    print(head);//语句2
+	    
+	    System.out.println("");
+	    System.out.println("headBak=>");
+	    print(headBak);//语句3
+	    
+	    System.out.println("");
+	    System.out.println("headBak1=>");
+	    print(headBak1);//语句3
+	}
+	//如语句1会输出：123
+	//那么请问语句2输出什么？
+
+	private void testingSortTwoListNode() {
+		int[] unSortList1 = {3,4,9,5,6,7,1,2,8,10};  
+		int[] unSortList2 = {12,13,14,15,11};  
+		
+		ListNode result = mergeTwoUnSortListNode(ListNode.arrayToListNode(unSortList1),ListNode.arrayToListNode(unSortList2));
+		System.out.println("sortTwoListNode="+result);
+		System.out.println("==========================================");
+		
+		
+		
+	}
+	
+	
+	public ListNode mergeTwoUnSortListNode(ListNode n1, ListNode n2) {
+		
+		ListNode result = n1;
+		ListNode minListNode = n1;
+		
+//		while() {
+//			
+//		}
+				
+		return result ;
 	}
 	
 }

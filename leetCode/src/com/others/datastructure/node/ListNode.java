@@ -23,9 +23,9 @@ public class ListNode {
 
 
 	//@Override
-	public String toString() {
-		return this.toString(this);
-	}
+//	public String toString() {
+//		return this.toString(this);
+//	}
 	public String toString(ListNode node) {
 		if (node == null) return "";
 		StringBuilder sb = new StringBuilder();
@@ -109,7 +109,8 @@ public class ListNode {
 		//listNodeResult = swapPairs_good(listNode1,listNode2); 
 		//System.out.println("swapPairs_good="+listNodeResult);
 		
-		
 	}
+	
+	
 	
 }

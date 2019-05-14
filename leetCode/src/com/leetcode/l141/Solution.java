@@ -80,8 +80,7 @@ public class Solution {
 		System.out.println("2hasCycle="+result);
 		System.out.println("===================================================");
 		
-		//listNodeResult = swapPairs_good(listNode1,listNode2); 
-		//System.out.println("swapPairs_good="+listNodeResult);
+
 	}
 	
 	//smart solution 

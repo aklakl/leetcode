@@ -55,8 +55,6 @@ public class Solution {
 		ListNode  result = middleNode(ListNode.arrayToListNode(arrays));
 		System.out.println("middleNode="+result);
 	 
-		//listNodeResult = swapPairs_good(listNode1,listNode2); 
-		//System.out.println("swapPairs_good="+listNodeResult);
 		
 	}
 	//tricks(fast slow) solution :https://www.youtube.com/watch?v=UitXxwVeOrk&feature=youtu.be
