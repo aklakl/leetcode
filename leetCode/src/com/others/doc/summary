@@ -11,3 +11,11 @@ algorithm:
 
 singly linked list node ()
 usually using fast-slow algorithm.
+
+
+newer understand leetcode:https://selfboot.cn/2016/072/4/leetcode_guide_why/
+LeetCode按照怎样的顺序来刷题比较好:https://www.zhihu.com/question/36738189
+
+
+General Summary：
+read ==> analysis ==> Thinking ==> conclude  ==> summary  ==> coding

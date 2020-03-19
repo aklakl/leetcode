@@ -8,10 +8,20 @@ public class TmpTesting {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		tmpTesting();
-		testMapSize();
-		tmpTestingChar();
-		testObjectsToString();
+//		tmpTesting();
+//		testMapSize();
+//		tmpTestingChar();
+//		testObjectsToString();
+		tmpCal();
+	}
+	
+	public static void tmpCal(){
+		int len = 10;
+		for (int i= 0; i < len ; i++) {
+			System.out.println(i+"%2="+i%2+"|");
+			//System.out.println(i+"/2="+i/2+"|");
+		}
+
 	}
 	
 	public static void tmpTestingChar(){
