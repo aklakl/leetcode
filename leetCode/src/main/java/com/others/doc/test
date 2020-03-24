@@ -1,0 +1,5 @@
+Runnable和Thread
+通过上面的两个小例子程序，我们可以得知，只是实现Runnable接口，并不能启动或者说实现一个线程。Runnable接口，并不能代表一个线程。Runnable接口和线程是两个不同的概念！
+换句话说，一个类，实现Runnable接口，这个类可以做很多事情，不仅仅只被用于线程，也可以用于其他功能！
+https://blog.csdn.net/zxw136511485/article/details/53032658
+https://blog.csdn.net/king_kgh/article/details/78213576
