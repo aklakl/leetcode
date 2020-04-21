@@ -17,9 +17,9 @@ public class TestStack {
 	public static void testQueue(Stack stack) {
 		System.out.println("CurrentStack="+stack);		
 		for(int i = 0;i<6;i++) {
-			stack.push("Test"+i);
+			stack.push("Practice"+i);
 		}
-		System.out.println("after push 6 Test");
+		System.out.println("after push 6 Practice");
 		System.out.println("CurrentStack="+stack);
 		
 		stack.pop();

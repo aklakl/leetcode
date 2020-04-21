@@ -1,13 +1,6 @@
 package com.iv.i20200319test;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Objects;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,6 +13,33 @@ import org.slf4j.LoggerFactory;
 
 public class CountWord {
 
+	
+	public static void testPractice() {
+		Map<String,Long> input = Arrays.asList(inputString).stream()
+				.map(s -> s.split(" "))
+				.map(array -> Arrays.stream(array).filter(s-> !Objects.isNull(s) ) )
+				.map(array -> Stream.of(array) )
+				.flatMap(stream -> stream)
+				.parallel()
+				.collect(Collectors.groupingBy(key -> key.toString().toLowerCase().trim(), Collectors.counting() ));
+
+		
+		logger.info("input = {}",input);
+
+		List<Entry<String,Long>> mapList = new ArrayList<Entry<String, Long>>(input.entrySet());
+
+		logger.info("mapList = {}",mapList);
+		Collections.sort(mapList,new Comparator<Entry<String, Long>>(){
+
+			@Override
+			public int compare(Entry<String, Long> o1, Entry<String, Long> o2){
+				return o2.getValue().intValue()-o1.getValue().intValue();
+			}
+		});
+		logger.info("mapListSorted = {}",mapList);
+		
+	}
+	
 
     
     public static void countWordsWithLambda() {
@@ -104,7 +124,6 @@ public class CountWord {
   		});
   		logger.info(" treeMapList={}",treeMapList);
   		treeMapList.forEach( treeMap ->{
-  			
   			logger.info(treeMap.getKey()+" "+treeMap.getValue());
   		});
     }
@@ -119,9 +138,9 @@ public class CountWord {
 //                .getResource("jul-log.properties")
 //                .getFile();
 //    	System.setProperty("java.util.logging.config.file", path);
-        countWordsWithLambda();
+		//countWordsWithLambda();
     	//countWords();
-        
+        testPractice();
     }
     
 	
